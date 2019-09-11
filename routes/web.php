@@ -11,10 +11,17 @@
 |
 */
 
-Route::get('contact', 'PagesController@getContact');
+// Route for admin
+Route::get('/', 'HomeController@index');
 
-Route::get('about', 'PagesController@getAbout');
+// regist contact
+Route::get('contact', 'ContactController@register');
+Route::post('contact', 'ContactController@insertData');
 
-Route::get('/', 'PagesController@getIndex');
+
+Route::get('about', 'AboutController@register');
+
+
+// Route for client
 
 

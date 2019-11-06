@@ -11,9 +11,10 @@
 |
 */
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/', 'PagesController@getindex');
+    Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' =>'BlogController@getSingle']);
     Route::get('contact', 'PagesController@getContact');
     Route::get('about', 'PagesController@getAbout');
+    Route::get('/', 'PagesController@getindex');
     Route::resource('posts', 'PostController');
 });
     

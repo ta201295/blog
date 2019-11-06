@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactsTable extends Migration
+class AddSlugToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateContactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('email', 100);
-            $table->string('subject', 100);
-            $table->text('message');
-            $table->timestamps();
+        Schema::table('posts', function (Blueprint $table) {
+            $table->string('slug')->unique()->after('body');
+            //$table->index(['slug', 'title'])
         });
     }
 
@@ -29,6 +26,8 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn('slug');
+        });
     }
 }

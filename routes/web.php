@@ -10,18 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/', 'PagesController@getindex');
+    Route::get('contact', 'PagesController@getContact');
+    Route::get('about', 'PagesController@getAbout');
+    Route::resource('posts', 'PostController');
+});
+    
+    
+    
+    
 
-// Route for admin
-Route::get('/', 'HomeController@index');
 
-// regist contact
-Route::get('contact', 'ContactController@register');
-Route::post('contact', 'ContactController@insertData');
-
-
-Route::get('about', 'AboutController@register');
-
-
-// Route for client
+    
 
 
